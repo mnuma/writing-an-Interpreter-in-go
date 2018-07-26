@@ -2,9 +2,6 @@ package lexer
 
 import (
 	"testing"
-
-	"github.com/k0kubun/pp"
-
 	"github.com/mnuma/writing-an-interpreter-in-go/token"
 )
 
@@ -107,21 +104,14 @@ if (5 < 10) {
 		{token.NOT_EQ, "!="},
 		{token.INT, "9"},
 		{token.SEMICOLON, ";"},
-		{token.EOF, ""},
+		{token.EOF, "a"},
 	}
 
 	l := New(input)
 
-	pp.Println(l)
-
-	pp.Println("range")
 	for i, tt := range tests {
 
 		tok := l.NextToken()
-
-		pp.Print(tt)
-		pp.Println(tok)
-
 		if tok.Type != tt.expectedType {
 			t.Fatalf("tests[%d] - tokentype wrong. expected=%q, got=%q",
 				i, tt.expectedType, tok.Type)

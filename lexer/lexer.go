@@ -2,6 +2,7 @@ package lexer
 
 import (
 	"github.com/mnuma/writing-an-interpreter-in-go/token"
+	"github.com/k0kubun/pp"
 )
 
 type Lexer struct {
@@ -101,9 +102,12 @@ func (l *Lexer) readChar() {
 }
 
 func (l *Lexer) peekChar() byte {
+	pp.Println(l.readPosition);
+	pp.Println(len(l.input));
 	if l.readPosition >= len(l.input) {
 		return 0
 	} else {
+		pp.Println(l.input[l.readPosition]);
 		return l.input[l.readPosition]
 	}
 }
